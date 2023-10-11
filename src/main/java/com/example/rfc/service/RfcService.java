@@ -8,14 +8,14 @@ public class RfcService {
 	
 	 public String generateRFCFromData(String nombre, String primerApellido, String segundoApellido, String fechaNacimiento) {
 	        String primeraLetraApellidoPaterno = primerApellido.substring(0, 1);
-	        String primeraVocalNombre = encontrarPrimeraVocal(nombre);
+	        String primeraVocalNombre = encontrarPrimeraVocal(primerApellido);
 	        String primeraLetraApellidoMaterno = segundoApellido.substring(0, 1);
 	        String primeraLetraNombre = nombre.substring(0, 1);
 	        String ultimasDosCifrasAnio = fechaNacimiento.substring(8, 10);
 	        String mesNacimiento = fechaNacimiento.substring(3, 5);
 	        String diaNacimiento = fechaNacimiento.substring(0, 2);
 	        String rfc = primeraLetraApellidoPaterno + primeraVocalNombre + primeraLetraApellidoMaterno + primeraLetraNombre + ultimasDosCifrasAnio + mesNacimiento + diaNacimiento;
-	        return rfc;
+	        return rfc.toUpperCase();
 	    }
 
 	    private String encontrarPrimeraVocal(String str) {

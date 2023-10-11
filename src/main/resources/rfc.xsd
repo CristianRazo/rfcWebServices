@@ -1,32 +1,55 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-		   targetNamespace="http://example.com/rfc"
-           xmlns:tns="http://example.com/rfc"
-           elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://example.com/rfc"
+	xmlns:tns="http://example.com/rfc" elementFormDefault="qualified">
 
-    <xs:element name="getRFCRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="rfc" type="tns:rfc"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+	<xs:element name="getRFCRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rfc" type="tns:rfc" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
-    <xs:element name="getRFCResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="rfc" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    
-    <xs:complexType name="rfc">
-    <xs:sequence>
-        <xs:element name="nombre" type="xs:string"/>
-        <xs:element name="primerApellido" type="xs:string"/>
-        <xs:element name="segundoApellido" type="xs:string"/>
-        <xs:element name="fechaNacimiento" type="xs:string"/>
-    </xs:sequence>
+	<xs:element name="getRFCResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rfc" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="rfc">
+		<xs:sequence>
+			<xs:element name="nombre">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="primerApellido">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" /> 
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="segundoApellido">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" /> 
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="fechaNacimiento">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="\d{2}-\d{2}-\d{4}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 
-   
+
 </xs:schema>
